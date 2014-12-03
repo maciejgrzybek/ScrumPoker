@@ -23,9 +23,20 @@ public class ClientsCollectorRegistrationTest {
     assertEquals(collector.getNumberOfRegisteredClients(), 2);
   }
 
+  @Test
+  public void askingForAddedClientReportsTrue() {
+    addClients(1);
+    assertTrue(collector.isClientRegistered(new Client(Integer.toString(0))));
+  }
+
+  @Test
+  public void askingForNotAddedClientReportsFalse() {
+    assertFalse(collector.isClientRegistered(new Client("non-existing client")));
+  }
+
   private void addClients(int number) {
     for (int i = 0; i < number; ++i)
-      collector.registerClient(new Client());
+      collector.registerClient(new Client(Integer.toString(number)));
   }
 
   private ClientsCollector collector;

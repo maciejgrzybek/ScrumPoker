@@ -15,5 +15,14 @@ public class ClientsCollector {
     return clients.size();
   }
 
+  public boolean isClientRegistered(Client client) {
+    for (Client c : clients) {
+      if (c.equals(client))
+        return true;
+    }
+
+    return false;
+  }
+
   private ArrayList<Client> clients;
 }
